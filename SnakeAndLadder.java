@@ -10,13 +10,15 @@ public class SnakeAndLadder
 		// giving a start point to player
 		int playerStartPoint = 0;
 
-		int playerPosition = 0, playerPreviousPoint = 0;
-
+		int playerPosition = 0, playerPreviousPoint = 0, diceCount = 0;
+		
+		// while loop for fetching result
 		while(playerPosition <= 100){
 
 			// generating random number for dice to roll 1-6
       	Random rand = new Random();
       	int diceRoll = (rand.nextInt(6))+1;
+			diceCount = diceCount + 1;
 
       	// generating random numbers for play 0-2
       	Random ran = new Random();
@@ -45,6 +47,8 @@ public class SnakeAndLadder
 					System.out.println("Invalid Option");
 
 			}
+			// player position each time dice is rolled
+			System.out.println("Player position after dice roll " + playerPosition);
 								
 			if (playerPosition < 0){
 				playerPosition = playerStartPoint;
@@ -54,7 +58,10 @@ public class SnakeAndLadder
 				break;
 			}
 		}
-		System.out.println(playerPosition);
+		// printing dice count
+		System.out.println("No.of Times dice has been rolled: " + diceCount);
+
+		// end result
 		System.out.println("Player wins!, Game Over.");
 	}	
 
