@@ -10,7 +10,7 @@ public class SnakeAndLadder
 		// giving a start point to player
 		int playerStartPoint = 0;
 
-		int playerPosition = 0;
+		int playerPosition = 0, playerPreviousPoint = 0;
 
 		while(playerPosition <= 100){
 
@@ -21,6 +21,8 @@ public class SnakeAndLadder
       	// generating random numbers for play 0-2
       	Random ran = new Random();
       	int playCheck = ran.nextInt(3);
+
+			playerPreviousPoint = playerPosition;
 
 			// writing a swtich case for play check  
 			switch (playCheck) {
@@ -43,11 +45,16 @@ public class SnakeAndLadder
 					System.out.println("Invalid Option");
 
 			}
-			
-			if(playerPosition < 0){
+								
+			if (playerPosition < 0){
 				playerPosition = playerStartPoint;
+			}else if (playerPosition > 100){
+				playerPosition = playerPosition - playerPreviousPoint;
+			}else if (playerPosition == 100){
+				break;
 			}
 		}
+		System.out.println(playerPosition);
 		System.out.println("Player wins!, Game Over.");
 	}	
 
